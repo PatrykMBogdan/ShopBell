@@ -19,8 +19,4 @@ class Encoder{
         static void IRAM_ATTR isrS1();
         static void IRAM_ATTR isrButton();
         void init();
-        void read(uint8_t* cursorPosition, bool* isButtonPressed, bool* doRedrawScreen);
-        void rotateLeft(uint8_t* cursorPosition);
-        void rotateRight(uint8_t* cursorPosition);
-        void buttonPressed(bool* isButtonPressed);
 };

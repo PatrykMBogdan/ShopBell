@@ -14,12 +14,11 @@ constexpr uint8_t TOP_SPACING = FONT_SIZE + LINE_SPACING + 2;
 class Display{
     private:
         Adafruit_SH1106G display = Adafruit_SH1106G(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET_PIN);
-        void redrawScreen(bool* doRedrawScreen);
     public:
         Display();
         void init();
         void standbyMode();
-        void showMenu(uint8_t cursorPosition, bool* doRedrawScreen);
+        void showMenu(uint8_t cursorPosition);
         void centerText(String text, uint16_t y);
         void drawMenuOption(String optionName, uint8_t position, uint8_t cursorPosition);
         void drawSelectedMenuOption(String optionName, uint8_t position);

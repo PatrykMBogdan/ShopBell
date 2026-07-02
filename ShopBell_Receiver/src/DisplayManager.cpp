@@ -13,14 +13,13 @@ void Display::init(){
 void Display::standbyMode(){
     display.clearDisplay();
 }
-void Display::showMenu(uint8_t cursorPosition, bool* doRedrawScreen){
+void Display::showMenu(uint8_t cursorPosition){
     display.clearDisplay();
     display.setCursor(0,0);
     centerText("MENU"+String(cursorPosition),0);
     drawMenuOption("GLOSNOSC", 0, cursorPosition);
     drawMenuOption("GLOSNOSC", 1, cursorPosition);
-    drawMenuOption("GLOSNOSC", 2, cursorPosition);
-    redrawScreen(doRedrawScreen);
+    display.display();
 }
 
 void Display::drawMenuOption(String optionName, uint8_t position, uint8_t cursorPosition){
@@ -46,8 +45,4 @@ void Display::centerText(String text,uint16_t y){
     int x = display.width()/2 - textWidth/2;
     display.setCursor(x,y);
     display.println(text);
-}
-void Display::redrawScreen(bool* doRedrawScreen){
-    display.display();
-    *doRedrawScreen = false;
 }

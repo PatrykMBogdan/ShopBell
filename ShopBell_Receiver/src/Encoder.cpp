@@ -1,5 +1,4 @@
 #include "Encoder.h"
-constexpr uint8_t MENUS_COUNT = 3;
 
 Encoder *Encoder::instance = nullptr;
 
@@ -51,29 +50,4 @@ void Encoder::handleInterruptButton(){
         lastClick = millis();
         hasButtonBeenPressed = true;
     }
-}
-
-void Encoder::buttonPressed(bool* isButtonPressed){
-    Serial.println("Button got pressed!");
-    *isButtonPressed = true;
-    hasButtonBeenPressed = false;
-}
-
-void Encoder::rotateLeft(uint8_t* cursorPosition){
-    Serial.println("Rotated Left!");
-    *cursorPosition = (*cursorPosition + MENUS_COUNT - 1) % MENUS_COUNT;
-    hasRotatedLeft = false;
-}
-
-void Encoder::rotateRight(uint8_t* cursorPosition){
-    Serial.println("Rotated Right!");
-    *cursorPosition = (*cursorPosition + 1) % MENUS_COUNT;
-    hasRotatedRight = false;
-}
-
-void Encoder::read(uint8_t* cursorPosition, bool* isButtonPressed, bool* doRedrawScreen){
-    if(hasButtonBeenPressed) buttonPressed(isButtonPressed);
-    if(hasRotatedLeft) rotateLeft(cursorPosition);
-    else if(hasRotatedRight) rotateRight(cursorPosition);
-    if(hasButtonBeenPressed || hasRotatedRight || hasRotatedLeft) *doRedrawScreen = true;
 }
