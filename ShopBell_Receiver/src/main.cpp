@@ -17,6 +17,7 @@ void setup() {
   Serial.println("Booting up...");
   ComunicationManager.init();
   Led.init();
+  Serial.println("Booting succsefull");
 }
 
 void loop() {
@@ -26,6 +27,6 @@ void loop() {
 void comunicationHandler(){
   if(ComunicationManager.GetIsMessage()){
     Led.showStatus(ComunicationManager.getLastStatus());
-    Serial.println("Bateria: "+String(ComunicationManager.getBatteryPercent())+"%");
+    Serial.println("Message received");
   }
 }

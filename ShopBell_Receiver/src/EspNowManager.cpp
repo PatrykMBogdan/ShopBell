@@ -33,7 +33,3 @@ message EspNowManager::getLastMessage(){
 transmiterStatus EspNowManager::getLastStatus(){
     return myMessage.status;
 }
-
-uint8_t EspNowManager::getBatteryPercent(){
-    return myMessage.batteryPercent;
-}

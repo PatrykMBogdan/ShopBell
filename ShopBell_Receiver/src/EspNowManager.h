@@ -5,7 +5,6 @@
 struct message{
   transmiterStatus status;
   uint64_t sleepTime;
-  uint8_t batteryPercent;
 };
 
 class EspNowManager{
@@ -19,5 +18,4 @@ class EspNowManager{
         bool GetIsMessage();
         message getLastMessage();
         transmiterStatus getLastStatus();
-        uint8_t getBatteryPercent();
 };
