@@ -7,7 +7,7 @@ BuzzerManager::BuzzerManager(gpio_num_t BuzzerPin, uint16_t soundFrequency){
 }
 
 void BuzzerManager::init(){
-    ledcSetup(0, 440, 8);
+    ledcSetup(0, soundFrequency, 8);
     ledcAttachPin(BuzzerPin, 0);
     ledcWrite(0, 0);
 }

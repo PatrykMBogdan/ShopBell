@@ -14,6 +14,7 @@ void EspNowManager::init(){
 
 void EspNowManager::OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
     if(instance == NULL) return;
+    if(len != sizeof(message)) return;
     memcpy(&(instance->myMessage), incomingData, sizeof(myMessage));
     instance->isNewMessage = true;
 }

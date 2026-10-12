@@ -13,29 +13,29 @@ void LedManager::init(){
 }
 
 void LedManager::ledRedOn(){
-    gpio_set_level(ledRed, HIGH);
+    digitalWrite(ledRed, HIGH);
 }
 
 void LedManager::ledGreenOn(){
-    gpio_set_level(ledGreen, HIGH);
+    digitalWrite(ledGreen, HIGH);
 }
 
 void LedManager::ledAllOn(){
-    gpio_set_level(ledGreen, HIGH);
-    gpio_set_level(ledRed, HIGH);
+    digitalWrite(ledGreen, HIGH);
+    digitalWrite(ledRed, HIGH);
 }
 
 void LedManager::ledRedOff(){
-    gpio_set_level(ledRed, LOW);
+    digitalWrite(ledRed, LOW);
 }
 
 void LedManager::ledGreenOff(){
-    gpio_set_level(ledGreen, LOW);
+    digitalWrite(ledGreen, LOW);
 }
 
 void LedManager::ledAllOff(){
-    gpio_set_level(ledGreen, LOW);
-    gpio_set_level(ledRed, LOW);
+    digitalWrite(ledGreen, LOW);
+    digitalWrite(ledRed, LOW);
 }
 
 void LedManager::ledStatusCooldown(){
