@@ -1,12 +1,13 @@
 #include <Arduino.h>
 #include <WiFi.h>
-#include "esp_now.h"
-#include "BatteryManager.h"
+#include <esp_now.h>
 
-constexpr uint64_t MINUTES_TO_NANOSECONDS = 1000000*60;
-constexpr uint64_t SLEEP_TIME = 0.2 * MINUTES_TO_NANOSECONDS;
+constexpr gpio_num_t BATTERY_PIN = GPIO_NUM_34;
+constexpr uint64_t MINUTES_TO_MICROSECONDS = 1000000*60;
+constexpr uint64_t SLEEP_TIME = 0.15 * MINUTES_TO_MICROSECONDS;
 constexpr uint8_t RECEIVER_MAC_ADDRESS[] = {0x1C, 0xC3, 0xAB, 0xC3, 0xD5, 0x30};
 esp_now_peer_info_t peerInfo;
+
 enum class transmiterStatus{
   standby,
   cooldown
@@ -15,7 +16,6 @@ enum class transmiterStatus{
 struct message{
   transmiterStatus status;
   uint64_t sleepTime;
-  float batteryLevel;
 };
 
 struct message myMessage;
@@ -62,8 +62,8 @@ void Main(){
 
 void setup() {
   Serial.begin(115200);
+  Serial.println("Booting...");
   WiFi.mode(WIFI_STA);
-  Serial.println("Hello");
   Main();
 }
 
